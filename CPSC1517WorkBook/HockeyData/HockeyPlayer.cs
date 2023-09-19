@@ -1,4 +1,5 @@
-﻿namespace Hockey.Data
+﻿using Utils;
+namespace Hockey.Data
 {
     /// <summary>
     /// An instance of this class will hold data about a hockey
@@ -60,30 +61,71 @@
 
             set
             {
-                DateOnly currentDate = DateOnly.FromDateTime(DateTime.Now);
-                if (value < currentDate)
-                {
-                    _dateOfBirth = value;
-                }
-                else
+                
+                if (Utilities.IsInTheFuture(value))
                 {
                     throw new ArgumentException("The date should not be in the future");
                 }
+               _dateOfBirth = value;
+            }
+        }
+        public int WeightInPounds
+        {
+            get 
+            { 
+                return _weightInPounds; 
+            }
+            set 
+            { 
+                if (value <= 0)
+                {
+                    throw new ArgumentException("Weight must be positive. ");
+                }
+            } 
+        }
+        public string FirstName
+        {
+            get
+            {
+                return _firstName;
+            }
+
+            set
+            {
+                if (Utilities.IsNullEmptyOrWhiteSpace(value))
+                {
+                    throw new ArgumentException("First name cannot be null or empty.");
+                }
+
+                _firstName = value;
             }
         }
 
+        public string LastName
+        {
+            get
+            {
+                return _lastName;
+            }
+
+            set
+            {
+                if (Utilities.IsNullEmptyOrWhiteSpace(value))
+                {
+                    throw new ArgumentException("Last name cannot be null or empty.");
+                }
+
+                _lastName = value;
+            }
+        }
         public Position Position { 
             get; set; 
         }
 
         public Shot Shot { get; set; }
 
-        public weightInpounds _weightinPounds
-        {
-            get;
-            set;
-        }
-
+        
+        
         // Default constructor aka name plus emptery parameter list
         public HockeyPlayer()
         {
