@@ -1,6 +1,6 @@
 # CPSC1517 Fall 2023 Term Workbook
 
-## your name here
+## Micael Koule
 
 ## your Github Account id
 
