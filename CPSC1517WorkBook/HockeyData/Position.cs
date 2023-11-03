@@ -1,5 +1,4 @@
-﻿
-namespace Hockey.Data
+﻿namespace Hockey.Data
 {
     public enum Position
     {
